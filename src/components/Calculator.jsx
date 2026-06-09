@@ -5,26 +5,24 @@ import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';export default function Calculator() {
   const [activeTab, setActiveTab] = useState('hpp');
 
-  // HPP State
   const [hppData, setHppData] = useState({
-    productName: 'Spandek',
-    productionUnit: 100,
-    rawMaterialMain: 50000,
-    rawMaterialSub: 30000,
-    packaging: 40000,
-    laborCost: 20000,
-    laborBonus: 20000,
-    overheadElectricity: 40000,
-    overheadOther: 60000,
-    targetMargin: 20,
+    productName: '',
+    productionUnit: 0,
+    rawMaterialMain: 0,
+    rawMaterialSub: 0,
+    packaging: 0,
+    laborCost: 0,
+    laborBonus: 0,
+    overheadElectricity: 0,
+    overheadOther: 0,
+    targetMargin: 0,
   });
 
-  // BEP State
   const [bepData, setBepData] = useState({
-    hargaJual: 15000,
-    biayaVariabel: 10000,
-    biayaTetap: 2000000,
-    targetHarian: 20,
+    hargaJual: 0,
+    biayaVariabel: 0,
+    biayaTetap: 0,
+    targetHarian: 0,
   });
 
   const formatRupiah = (number) => {
@@ -215,7 +213,7 @@ import * as XLSX from 'xlsx';export default function Calculator() {
             className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
               activeTab === 'hpp' 
                 ? 'bg-[#c0000c] text-white shadow-lg shadow-[#c0000c]/30 scale-105' 
-                : 'bg-[var(--card-bg)] text-text-secondary hover:text-text-primary hover:bg-border-color border border-border-color'
+                : 'bg-bg-primary text-text-secondary hover:text-text-primary hover:bg-border-color border border-border-color'
             }`}
           >
             <Package size={20} />
@@ -226,7 +224,7 @@ import * as XLSX from 'xlsx';export default function Calculator() {
             className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
               activeTab === 'bep' 
                 ? 'bg-[#c0000c] text-white shadow-lg shadow-[#c0000c]/30 scale-105' 
-                : 'bg-[var(--card-bg)] text-text-secondary hover:text-text-primary hover:bg-border-color border border-border-color'
+                : 'bg-bg-primary text-text-secondary hover:text-text-primary hover:bg-border-color border border-border-color'
             }`}
           >
             <Activity size={20} />
@@ -235,7 +233,7 @@ import * as XLSX from 'xlsx';export default function Calculator() {
         </div>
 
         {/* Calculator Content */}
-        <div className="bg-[var(--card-bg)] border border-border-color rounded-3xl p-6 md:p-8 shadow-2xl backdrop-blur-sm">
+        <div className="bg-bg-primary border border-border-color rounded-3xl p-6 md:p-8 shadow-2xl">
           
           {activeTab === 'hpp' && (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -250,7 +248,7 @@ import * as XLSX from 'xlsx';export default function Calculator() {
                     <div className="space-y-4">
                       <div>
                         <label className="block text-xs font-semibold text-text-secondary mb-1">Jumlah Unit Produksi</label>
-                        <input type="text" name="productionUnit" value={formatInput(hppData.productionUnit)} onChange={handleHppChange} className="w-full bg-bg-secondary border border-border-color rounded-lg px-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
+                        <input type="text" name="productionUnit" value={formatInput(hppData.productionUnit)} onChange={handleHppChange} placeholder="Contoh: 100" className="w-full bg-bg-secondary border border-border-color rounded-lg px-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
                       </div>
                     </div>
                   </div>
@@ -265,21 +263,21 @@ import * as XLSX from 'xlsx';export default function Calculator() {
                         <label className="block text-xs font-semibold text-text-secondary mb-1">Bahan Baku Utama</label>
                         <div className="relative">
                           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                          <input type="text" name="rawMaterialMain" value={formatInput(hppData.rawMaterialMain)} onChange={handleHppChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
+                          <input type="text" name="rawMaterialMain" value={formatInput(hppData.rawMaterialMain)} onChange={handleHppChange} placeholder="Contoh: 50.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
                         </div>
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-text-secondary mb-1">Bahan Pendukung</label>
                         <div className="relative">
                           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                          <input type="text" name="rawMaterialSub" value={formatInput(hppData.rawMaterialSub)} onChange={handleHppChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
+                          <input type="text" name="rawMaterialSub" value={formatInput(hppData.rawMaterialSub)} onChange={handleHppChange} placeholder="Contoh: 30.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
                         </div>
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-text-secondary mb-1">Kemasan</label>
                         <div className="relative">
                           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                          <input type="text" name="packaging" value={formatInput(hppData.packaging)} onChange={handleHppChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
+                          <input type="text" name="packaging" value={formatInput(hppData.packaging)} onChange={handleHppChange} placeholder="Contoh: 40.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
                         </div>
                       </div>
                     </div>
@@ -297,14 +295,14 @@ import * as XLSX from 'xlsx';export default function Calculator() {
                         <label className="block text-xs font-semibold text-text-secondary mb-1">Upah Produksi</label>
                         <div className="relative">
                           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                          <input type="text" name="laborCost" value={formatInput(hppData.laborCost)} onChange={handleHppChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
+                          <input type="text" name="laborCost" value={formatInput(hppData.laborCost)} onChange={handleHppChange} placeholder="Contoh: 20.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
                         </div>
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-text-secondary mb-1">Bonus/Insentif</label>
                         <div className="relative">
                           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                          <input type="text" name="laborBonus" value={formatInput(hppData.laborBonus)} onChange={handleHppChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
+                          <input type="text" name="laborBonus" value={formatInput(hppData.laborBonus)} onChange={handleHppChange} placeholder="Contoh: 20.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
                         </div>
                       </div>
                     </div>
@@ -320,14 +318,14 @@ import * as XLSX from 'xlsx';export default function Calculator() {
                         <label className="block text-xs font-semibold text-text-secondary mb-1">Listrik & Utilitas</label>
                         <div className="relative">
                           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                          <input type="text" name="overheadElectricity" value={formatInput(hppData.overheadElectricity)} onChange={handleHppChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
+                          <input type="text" name="overheadElectricity" value={formatInput(hppData.overheadElectricity)} onChange={handleHppChange} placeholder="Contoh: 40.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
                         </div>
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-text-secondary mb-1">Biaya Lainnya</label>
                         <div className="relative">
                           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                          <input type="text" name="overheadOther" value={formatInput(hppData.overheadOther)} onChange={handleHppChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
+                          <input type="text" name="overheadOther" value={formatInput(hppData.overheadOther)} onChange={handleHppChange} placeholder="Contoh: 60.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-2.5 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors" />
                         </div>
                       </div>
                     </div>
@@ -397,7 +395,7 @@ import * as XLSX from 'xlsx';export default function Calculator() {
                   ) : (
                     <div className="flex flex-col items-center justify-center h-full text-center py-12 opacity-50">
                       <Package size={48} className="mb-4 text-text-secondary" />
-                      <p className="text-text-secondary font-medium">Isi data di samping lalu klik tombol "Hitung HPP Sekarang" untuk melihat hasil.</p>
+                      <p className="text-text-secondary font-medium">Isi data pada form lalu klik tombol "Hitung HPP Sekarang" untuk melihat hasil.</p>
                     </div>
                   )}
                 </div>
@@ -420,7 +418,7 @@ import * as XLSX from 'xlsx';export default function Calculator() {
                       <p className="text-xs text-text-secondary mb-2">Harga jual per produk ke pembeli.</p>
                       <div className="relative">
                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                        <input type="text" name="hargaJual" value={formatInput(bepData.hargaJual)} onChange={handleBepChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-3 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors font-medium" />
+                        <input type="text" name="hargaJual" value={formatInput(bepData.hargaJual)} onChange={handleBepChange} placeholder="Contoh: 15.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-3 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors font-medium" />
                       </div>
                     </div>
 
@@ -431,7 +429,7 @@ import * as XLSX from 'xlsx';export default function Calculator() {
                       <p className="text-xs text-text-secondary mb-2">Biaya yang ikut naik tiap 1 produk terjual (Misal: HPP + Kemasan).</p>
                       <div className="relative">
                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                        <input type="text" name="biayaVariabel" value={formatInput(bepData.biayaVariabel)} onChange={handleBepChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-3 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors font-medium" />
+                        <input type="text" name="biayaVariabel" value={formatInput(bepData.biayaVariabel)} onChange={handleBepChange} placeholder="Contoh: 10.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-3 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors font-medium" />
                       </div>
                     </div>
 
@@ -442,7 +440,7 @@ import * as XLSX from 'xlsx';export default function Calculator() {
                       <p className="text-xs text-text-secondary mb-2">Biaya pasti per bulan (Misal: Gaji, Sewa Tempat).</p>
                       <div className="relative">
                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-medium">Rp</span>
-                        <input type="text" name="biayaTetap" value={formatInput(bepData.biayaTetap)} onChange={handleBepChange} className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-3 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors font-medium" />
+                        <input type="text" name="biayaTetap" value={formatInput(bepData.biayaTetap)} onChange={handleBepChange} placeholder="Contoh: 2.000.000" className="w-full bg-bg-secondary border border-border-color rounded-lg pl-10 pr-4 py-3 text-text-primary focus:outline-none focus:border-[#c0000c] transition-colors font-medium" />
                       </div>
                     </div>
                   </div>
@@ -500,7 +498,7 @@ import * as XLSX from 'xlsx';export default function Calculator() {
                 ) : (
                   <div className="flex flex-col items-center justify-center h-full text-center py-12 opacity-50">
                     <Activity size={48} className="mb-4 text-text-secondary" />
-                    <p className="text-text-secondary font-medium">Isi data di samping lalu klik tombol "Hitung Titik Impas Sekarang" untuk melihat hasil.</p>
+                    <p className="text-text-secondary font-medium">Isi data pada form lalu klik tombol "Hitung Titik Impas Sekarang" untuk melihat hasil.</p>
                   </div>
                 )}
               </div>

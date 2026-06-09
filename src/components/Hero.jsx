@@ -1,14 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ChevronDown, Zap, Shield, Award, Download } from 'lucide-react';
 
-const particles = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  size: Math.random() * 4 + 2,
-  left: Math.random() * 100,
-  delay: Math.random() * 15,
-  duration: Math.random() * 10 + 10,
-  color: i % 3 === 0 ? '#c0000c' : i % 3 === 1 ? '#ff4444' : '#8b0009',
-}));
+
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
@@ -23,29 +16,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden hero-grid bg-bg-primary">
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#c0000c]/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#c0000c]/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#c0000c]/3 rounded-full blur-3xl pointer-events-none"></div>
-
-      {/* Particles */}
-      {particles.map((p) => (
-        <div
-          key={p.id}
-          className="particle"
-          style={{
-            width: p.size,
-            height: p.size,
-            left: `${p.left}%`,
-            background: p.color,
-            animationDelay: `${p.delay}s`,
-            animationDuration: `${p.duration}s`,
-            opacity: 0.4,
-          }}
-        />
-      ))}
-
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-bg-primary">
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
@@ -116,35 +87,24 @@ export default function Hero() {
 
           {/* Right - Visual */}
           <div className={`relative flex items-center justify-center transition-all duration-1000 delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            {/* Big circle background */}
-            <div className="absolute w-80 h-80 lg:w-[480px] lg:h-[480px] rounded-full border border-[#c0000c]/10"></div>
-            <div className="absolute w-64 h-64 lg:w-[380px] lg:h-[380px] rounded-full border border-[#c0000c]/20 animate-[spin_30s_linear_infinite]"></div>
-            <div className="absolute w-48 h-48 lg:w-72 lg:h-72 rounded-full border border-[#c0000c]/30"></div>
-
             {/* Center logo container */}
-            <div className="relative z-10 animate-float">
+            <div className="relative z-10">
               <img 
                 src="/LogoPT.jpeg" 
                 alt="Logo PT Alberio Pratama Abadi" 
-                className="w-56 h-56 lg:w-72 lg:h-72 object-contain rounded-2xl shadow-[0_0_40px_rgba(192,0,12,0.4)]"
+                className="w-56 h-56 lg:w-72 lg:h-72 object-contain rounded-3xl bg-white shadow-lg border border-border-color"
               />
 
               {/* Floating badges */}
-              <div className="absolute -top-6 -right-6 bg-[#c0000c] rounded-2xl px-4 py-2 shadow-xl shadow-[#c0000c]/40">
-                <p className="text-text-primary font-black text-xl leading-none">10+</p>
-                <p className="text-red-200 text-xs">Tahun</p>
+              <div className="absolute -top-6 -right-6 bg-white border border-border-color rounded-2xl px-5 py-3 shadow-md">
+                <p className="text-[#c0000c] font-black text-xl leading-none">10+</p>
+                <p className="text-text-secondary text-xs font-medium mt-1">Tahun</p>
               </div>
-              <div className="absolute -bottom-4 -left-6 bg-glass border border-[#c0000c]/30 rounded-2xl px-4 py-2">
+              <div className="absolute -bottom-4 -left-6 bg-white border border-border-color rounded-2xl px-5 py-3 shadow-md">
                 <p className="text-[#c0000c] font-black text-xl leading-none">500+</p>
-                <p className="text-text-secondary text-xs">Proyek Selesai</p>
+                <p className="text-text-secondary text-xs font-medium mt-1">Proyek Selesai</p>
               </div>
             </div>
-
-            {/* Decorative dots */}
-            <div className="absolute top-8 left-8 w-2 h-2 bg-[#c0000c] rounded-full opacity-60"></div>
-            <div className="absolute top-16 left-16 w-1 h-1 bg-[#c0000c] rounded-full opacity-40"></div>
-            <div className="absolute bottom-8 right-8 w-2 h-2 bg-[#c0000c] rounded-full opacity-60"></div>
-            <div className="absolute bottom-16 right-16 w-1 h-1 bg-[#c0000c] rounded-full opacity-40"></div>
           </div>
         </div>
       </div>
