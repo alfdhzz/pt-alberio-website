@@ -3,13 +3,21 @@ import { Truck, MapPin, X, ChevronRight, Download } from 'lucide-react';
 
 const deliveries = [
   '/bukti pengiriman/testimoni (1).jpeg',
-  '/bukti pengiriman/testimoni (2).jpeg',
-  '/bukti pengiriman/testimoni (3).jpeg',
-  '/bukti pengiriman/testimoni (4).jpeg',
-  '/bukti pengiriman/testimoni (5).jpeg',
-  '/bukti pengiriman/testimoni (6).jpeg',
-  '/bukti pengiriman/testimoni (7).jpeg',
-  '/bukti pengiriman/testimoni (8).jpeg',
+  '/bukti pengiriman/testimoni (9).jpeg',
+  '/bukti pengiriman/testimoni (10).jpeg',
+  '/bukti pengiriman/testimoni (11).jpeg',
+  '/bukti pengiriman/testimoni (12).jpeg',
+  '/bukti pengiriman/testimoni (13).jpeg',
+  '/bukti pengiriman/testimoni (14).jpeg',
+  '/bukti pengiriman/testimoni (15).jpeg',
+  '/bukti pengiriman/testimoni (16).jpeg',
+  '/bukti pengiriman/testimoni (17).jpeg',
+  '/bukti pengiriman/testimoni (18).jpeg',
+  '/bukti pengiriman/testimoni (19).jpeg',
+  '/bukti pengiriman/testimoni (20).jpeg',
+  '/bukti pengiriman/testimoni (21).jpeg',
+  '/bukti pengiriman/testimoni (22).jpeg',
+  '/bukti pengiriman/testimoni (23).jpeg',
 ];
 
 export default function Deliveries() {

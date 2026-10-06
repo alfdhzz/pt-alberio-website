@@ -20,7 +20,10 @@ const products = [
     specs: ['Akurasi tekuk', 'Sistem hidrolik', 'Tahan lama'],
     badge: 'Popular',
     badgeColor: '#8b0009',
-    videoUrl: '/videos/mesin bending.mp4',
+    videoUrls: [
+      '/videos/mesin bending1.mp4',
+      '/videos/mesin bending2.mp4'
+    ],
   },
   {
     name: 'Mesin Cutting Laser',
@@ -209,7 +212,10 @@ const products = [
     specs: ['Multi fungsi', 'Heavy duty', 'Presisi'],
     badge: 'New',
     badgeColor: '#c0000c',
-    videoUrl: '/videos/Mesin holo kotak Besi dan pipa Besi.mp4',
+    videoUrls: [
+      '/videos/Mesin holo kotak Besi dan pipa Besi1.mp4',
+      '/videos/Mesin holo kotak Besi dan pipa Besi2.mp4'
+    ],
   },
   {
     name: 'Jasa Emboss & Printing Merek',
@@ -248,6 +254,8 @@ const ProductCard = ({ product, index, setSelectedMedia }) => {
     e.stopPropagation();
     if (product.imageUrls) {
       setCurrentImg((prev) => (prev + 1) % product.imageUrls.length);
+    } else if (product.videoUrls) {
+      setCurrentImg((prev) => (prev + 1) % product.videoUrls.length);
     }
   };
 
@@ -255,6 +263,8 @@ const ProductCard = ({ product, index, setSelectedMedia }) => {
     e.stopPropagation();
     if (product.imageUrls) {
       setCurrentImg((prev) => (prev - 1 + product.imageUrls.length) % product.imageUrls.length);
+    } else if (product.videoUrls) {
+      setCurrentImg((prev) => (prev - 1 + product.videoUrls.length) % product.videoUrls.length);
     }
   };
 
@@ -271,6 +281,9 @@ const ProductCard = ({ product, index, setSelectedMedia }) => {
           if (product.videoUrl) {
             e.stopPropagation();
             setSelectedMedia({ type: 'video', url: product.videoUrl });
+          } else if (product.videoUrls) {
+            e.stopPropagation();
+            setSelectedMedia({ type: 'videoGallery', urls: product.videoUrls, index: currentImg });
           } else if (product.imageUrls) {
             e.stopPropagation();
             setSelectedMedia({ type: 'gallery', urls: product.imageUrls, index: currentImg });
@@ -280,7 +293,7 @@ const ProductCard = ({ product, index, setSelectedMedia }) => {
           }
         }}
       >
-        {product.videoUrl ? (
+        {product.videoUrl || product.videoUrls ? (
           <>
             {/* Play Icon Overlay (semi-transparent to show thumbnail) */}
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/20 group-hover:opacity-0 transition-opacity duration-300 z-10 pointer-events-none">
@@ -288,7 +301,8 @@ const ProductCard = ({ product, index, setSelectedMedia }) => {
                <span className="text-[10px] tracking-widest font-bold uppercase text-white drop-shadow-lg">Putar Video</span>
             </div>
             <video 
-              src={product.videoUrl} 
+              key={product.videoUrl || product.videoUrls[currentImg]}
+              src={product.videoUrl || product.videoUrls[currentImg]} 
               loop 
               muted 
               playsInline
@@ -299,6 +313,30 @@ const ProductCard = ({ product, index, setSelectedMedia }) => {
                 e.target.pause();
               }}
             />
+            {product.videoUrls && product.videoUrls.length > 1 && (
+              <>
+                <button 
+                  onClick={prevImg}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#c0000c] text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-20"
+                >
+                  <ChevronRight size={16} className="rotate-180" />
+                </button>
+                <button 
+                  onClick={nextImg}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-[#c0000c] text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-20"
+                >
+                  <ChevronRight size={16} />
+                </button>
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                  {product.videoUrls.map((_, idx) => (
+                    <div 
+                      key={idx} 
+                      className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${currentImg === idx ? 'bg-[#c0000c] w-3' : 'bg-white/50'}`}
+                    ></div>
+                  ))}
+                </div>
+              </>
+            )}
           </>
         ) : product.imageUrls ? (
           <>
@@ -379,13 +417,26 @@ const ProductCard = ({ product, index, setSelectedMedia }) => {
           ))}
         </div>
 
-        <button
-          onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-          className="flex items-center gap-1.5 text-[#c0000c] text-xs font-semibold group-hover:gap-3 transition-all duration-300 cursor-pointer"
-        >
-          <span>Minta Penawaran</span>
-          <ChevronRight size={12} />
-        </button>
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="flex items-center gap-1.5 text-[#c0000c] text-xs font-semibold group-hover:gap-3 transition-all duration-300 cursor-pointer"
+          >
+            <span>Minta Penawaran</span>
+            <ChevronRight size={12} />
+          </button>
+
+          <a
+            href={product.videoUrl || (product.videoUrls ? product.videoUrls[currentImg] : (product.imageUrls ? product.imageUrls[currentImg] : product.imageUrl))}
+            download
+            className="flex items-center gap-1.5 text-text-secondary hover:text-[#c0000c] transition-colors duration-300 text-xs font-medium bg-border-color/30 hover:bg-[#c0000c]/10 px-3 py-1.5 rounded-full"
+            title="Download Media"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Download size={14} />
+            <span>Unduh</span>
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -482,7 +533,7 @@ export default function Products() {
           >
             <div className="absolute top-4 right-4 z-10 flex gap-2">
               <a 
-                href={selectedMedia.type === 'gallery' ? selectedMedia.urls[selectedMedia.index] : selectedMedia.url}
+                href={selectedMedia.type === 'gallery' || selectedMedia.type === 'videoGallery' ? selectedMedia.urls[selectedMedia.index] : selectedMedia.url}
                 download
                 className="p-2 bg-black/50 hover:bg-[#c0000c] text-white rounded-full transition-colors cursor-pointer flex items-center justify-center"
                 title="Download Media"
@@ -498,7 +549,7 @@ export default function Products() {
               </button>
             </div>
 
-            {selectedMedia.type === 'gallery' && (
+            {(selectedMedia.type === 'gallery' || selectedMedia.type === 'videoGallery') && (
               <>
                 <button 
                   onClick={(e) => {
@@ -524,6 +575,14 @@ export default function Products() {
             {selectedMedia.type === 'video' ? (
               <video 
                 src={selectedMedia.url} 
+                controls 
+                autoPlay 
+                className="w-full h-auto max-h-[90vh] object-contain"
+              />
+            ) : selectedMedia.type === 'videoGallery' ? (
+              <video 
+                key={selectedMedia.urls[selectedMedia.index]}
+                src={selectedMedia.urls[selectedMedia.index]} 
                 controls 
                 autoPlay 
                 className="w-full h-auto max-h-[90vh] object-contain"
