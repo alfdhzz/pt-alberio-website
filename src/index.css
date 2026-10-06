@@ -73,7 +73,7 @@
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, #e00010 0%, #ff4444 100%);
+    background: linear-gradient(135deg, #c0000c 0%, #8b0009 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -223,4 +223,20 @@
   .animate-marquee {
     animation: marquee 35s linear infinite;
   }
+
+  /* Scroll Reveal Classes */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal.delay-100 { transition-delay: 100ms; }
+  .reveal.delay-200 { transition-delay: 200ms; }
+  .reveal.delay-300 { transition-delay: 300ms; }
 }

@@ -12,7 +12,10 @@ const clients = [
   "PT. Cahaya Berkah Truss",
   "PT. Permata Sinar Utama",
   "PT. Lima Berjaya Persada",
-  "AFCO Group"
+  "AFCO Group",
+  "PT. Mando Aceh",
+  "PT. Dunia Baja Bungo",
+  "CV. Mitra Pardomuan Medan"
 ];
 
 export default function Clients() {

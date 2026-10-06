@@ -9,7 +9,7 @@ export default function Navbar({ isDark, toggleTheme }) {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      const sections = ['home', 'about', 'services', 'products', 'calculator', 'stats', 'contact'];
+      const sections = ['home', 'about', 'services', 'products', 'calculator', 'stats', 'deliveries', 'contact'];
       for (const id of sections.reverse()) {
         const el = document.getElementById(id);
         if (el && window.scrollY >= el.offsetTop - 120) {
@@ -28,6 +28,7 @@ export default function Navbar({ isDark, toggleTheme }) {
     { href: '#services', label: 'Layanan' },
     { href: '#products', label: 'Produk' },
     { href: '#calculator', label: 'Kalkulator' },
+    { href: '#deliveries', label: 'Pengiriman' },
     { href: '#contact', label: 'Kontak' },
   ];
 
@@ -110,7 +111,7 @@ export default function Navbar({ isDark, toggleTheme }) {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="bg-[var(--nav-bg)] backdrop-blur-xl border-t border-border-color px-4 py-4 space-y-1">
           {navLinks.map((link) => (
             <button

@@ -72,7 +72,7 @@ export default function About() {
           </div>
 
           {/* Right - Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 reveal delay-100">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="section-line"></div>

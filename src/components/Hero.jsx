@@ -87,12 +87,16 @@ export default function Hero() {
 
           {/* Right - Visual */}
           <div className={`relative flex items-center justify-center transition-all duration-1000 delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            {/* Glowing Background Blobs */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 lg:w-96 lg:h-96 bg-[#c0000c]/20 rounded-full blur-[80px] animate-pulse"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-3/4 w-48 h-48 lg:w-72 lg:h-72 bg-[#e00010]/20 rounded-full blur-[60px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+
             {/* Center logo container */}
-            <div className="relative z-10">
+            <div className="relative z-10 animate-float">
               <img 
                 src="/LogoPT.jpeg" 
                 alt="Logo PT Alberio Pratama Abadi" 
-                className="w-56 h-56 lg:w-72 lg:h-72 object-contain rounded-3xl bg-white shadow-lg border border-border-color"
+                className="w-56 h-56 lg:w-72 lg:h-72 object-contain rounded-3xl bg-white shadow-[0_20px_50px_rgba(192,0,12,0.15)] border border-border-color"
               />
 
               {/* Floating badges */}
