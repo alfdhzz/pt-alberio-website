@@ -1,10 +1,25 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
 
 export default function Navbar({ isDark, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [lang, setLang] = useState('id');
+
+  useEffect(() => {
+    if (document.cookie.includes('googtrans=/id/en')) {
+      setLang('en');
+    }
+  }, []);
+
+  const toggleLanguage = () => {
+    const newLang = lang === 'id' ? 'en' : 'id';
+    document.cookie = `googtrans=/id/${newLang}; path=/`;
+    document.cookie = `googtrans=/id/${newLang}; domain=${window.location.hostname}; path=/`;
+    setLang(newLang);
+    window.location.reload();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +72,7 @@ export default function Navbar({ isDark, toggleTheme }) {
           </button>
 
           {/* Desktop Links & Theme Toggle */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden xl:flex items-center gap-4">
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -71,6 +86,16 @@ export default function Navbar({ isDark, toggleTheme }) {
                 {link.label}
               </button>
             ))}
+
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-bg-secondary text-text-primary hover:bg-border-color transition-colors cursor-pointer text-xs font-bold"
+              aria-label="Toggle Language"
+            >
+              <Globe size={16} />
+              <span>{lang === 'id' ? 'ID' : 'EN'}</span>
+            </button>
 
             {/* Theme Toggle */}
             <button
@@ -92,8 +117,15 @@ export default function Navbar({ isDark, toggleTheme }) {
             </a>
           </div>
 
-          {/* Mobile Menu Toggle & Theme */}
-          <div className="md:hidden flex items-center gap-4">
+          {/* Mobile Menu Toggle, Language & Theme */}
+          <div className="xl:hidden flex items-center gap-3">
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-bg-secondary text-text-primary hover:bg-border-color transition-colors cursor-pointer text-[10px] font-bold"
+            >
+              <Globe size={14} />
+              <span>{lang === 'id' ? 'ID' : 'EN'}</span>
+            </button>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-bg-secondary text-text-primary hover:bg-border-color transition-colors cursor-pointer"
@@ -111,7 +143,7 @@ export default function Navbar({ isDark, toggleTheme }) {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={`xl:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="bg-[var(--nav-bg)] backdrop-blur-xl border-t border-border-color px-4 py-4 space-y-1">
           {navLinks.map((link) => (
             <button

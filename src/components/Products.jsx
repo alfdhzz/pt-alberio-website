@@ -429,7 +429,7 @@ const ProductCard = ({ product, index, setSelectedMedia }) => {
           <a
             href={product.videoUrl || (product.videoUrls ? product.videoUrls[currentImg] : (product.imageUrls ? product.imageUrls[currentImg] : product.imageUrl))}
             download
-            className="flex items-center gap-1.5 text-text-secondary hover:text-[#c0000c] transition-colors duration-300 text-xs font-medium bg-border-color/30 hover:bg-[#c0000c]/10 px-3 py-1.5 rounded-full"
+            className="flex items-center gap-1.5 text-white bg-gradient-to-r from-[#c0000c] to-[#8b0009] hover:shadow-lg hover:shadow-[#c0000c]/40 hover:-translate-y-0.5 transition-all duration-300 text-xs font-semibold px-4 py-2 rounded-full"
             title="Download Media"
             onClick={(e) => e.stopPropagation()}
           >
