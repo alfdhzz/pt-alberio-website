@@ -14,16 +14,22 @@ const products = [
     videoUrl: '/videos/mesin canal c.mp4',
   },
   {
-    name: 'Mesin Bending',
+    name: 'Mesin Bending 1',
     category: 'Mesin Potong & Tekuk',
     desc: 'Mesin tekuk plat presisi untuk berbagai kebutuhan industri',
     specs: ['Akurasi tekuk', 'Sistem hidrolik', 'Tahan lama'],
     badge: 'Popular',
     badgeColor: '#8b0009',
-    videoUrls: [
-      '/videos/mesin bending1.mp4',
-      '/videos/mesin bending2.mp4'
-    ],
+    videoUrl: '/videos/mesin bending1.mp4',
+  },
+  {
+    name: 'Mesin Bending 2',
+    category: 'Mesin Potong & Tekuk',
+    desc: 'Mesin tekuk plat presisi untuk berbagai kebutuhan industri',
+    specs: ['Akurasi tekuk', 'Sistem hidrolik', 'Tahan lama'],
+    badge: null,
+    badgeColor: null,
+    videoUrl: '/videos/mesin bending2.mp4',
   },
   {
     name: 'Mesin Cutting Laser',
