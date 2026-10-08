@@ -14,7 +14,7 @@ const products = [
     videoUrl: '/videos/mesin canal c.mp4',
   },
   {
-    name: 'Mesin Bending 1',
+    name: 'Mesin Bending (Tampak Depan)',
     category: 'Mesin Potong & Tekuk',
     desc: 'Mesin tekuk plat presisi untuk berbagai kebutuhan industri',
     specs: ['Akurasi tekuk', 'Sistem hidrolik', 'Tahan lama'],
@@ -23,7 +23,7 @@ const products = [
     videoUrl: '/videos/mesin bending1.mp4',
   },
   {
-    name: 'Mesin Bending 2',
+    name: 'Mesin Bending (Tampak Samping)',
     category: 'Mesin Potong & Tekuk',
     desc: 'Mesin tekuk plat presisi untuk berbagai kebutuhan industri',
     specs: ['Akurasi tekuk', 'Sistem hidrolik', 'Tahan lama'],
