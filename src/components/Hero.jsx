@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ChevronDown, Zap, Shield, Award, Download } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Zap, Shield, Award, Download } from 'lucide-react';
 
 
 
@@ -88,8 +88,8 @@ export default function Hero() {
           {/* Right - Visual */}
           <div className={`relative flex items-center justify-center transition-all duration-1000 delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             {/* Glowing Background Blobs */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 lg:w-96 lg:h-96 bg-[#c0000c]/20 rounded-full blur-[80px] animate-pulse"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-3/4 w-48 h-48 lg:w-72 lg:h-72 bg-[#e00010]/20 rounded-full blur-[60px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 lg:w-96 lg:h-96 bg-[#c0000c]/20 rounded-full blur-[80px] animate-pulse pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-3/4 w-48 h-48 lg:w-72 lg:h-72 bg-[#e00010]/20 rounded-full blur-[60px] animate-pulse pointer-events-none" style={{ animationDelay: '1s' }}></div>
 
             {/* Center logo container */}
             <div className="relative z-10 animate-float">

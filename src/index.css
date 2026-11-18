@@ -81,12 +81,14 @@
 
   .bg-glass {
     background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
   }
 
   .bg-glass-red {
     background: rgba(192, 0, 12, 0.08);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(192, 0, 12, 0.2);
   }
@@ -240,15 +242,44 @@
   .reveal.delay-200 { transition-delay: 200ms; }
   .reveal.delay-300 { transition-delay: 300ms; }
 
-  /* Google Translate Fixes */
+  /* Google Translate Complete Cleanup & Fixes for iOS Safari */
   body {
-    top: 0px !important; 
+    top: 0px !important;
+    position: static !important;
   }
-  .goog-te-banner-frame.skiptranslate, #goog-gt-tt {
+  
+  iframe.skiptranslate,
+  iframe[class*="skiptranslate"],
+  iframe[id*=":container"],
+  iframe[id^=":"],
+  iframe[src*="translate.google"],
+  .goog-te-banner-frame,
+  #goog-gt-tt,
+  .goog-te-balloon-frame,
+  .goog-tooltip,
+  .goog-tooltip-skiptranslate,
+  .goog-te-spinner-pos,
+  div[class*="VIpgJd"],
+  span[class*="VIpgJd"],
+  iframe[class*="VIpgJd"],
+  [class*="VIpgJd-ZVi9C"],
+  [class*="VIpgJd-yAWNEb"],
+  #google_translate_element {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    border: none !important;
   }
+
   .goog-text-highlight {
     background-color: transparent !important;
     box-shadow: none !important;
+    border: none !important;
   }
 }

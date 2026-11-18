@@ -10,6 +10,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <title>PT Alberio Pratama Abadi | Specialist Roll Forming & Cutting Laser</title>
+    <!-- Prevent Google Translate injected iframe / banner black box on iOS Safari -->
+    <style>
+      body { top: 0px !important; position: static !important; }
+      iframe.skiptranslate,
+      iframe[class*="skiptranslate"],
+      iframe[id*=":container"],
+      iframe[id^=":"],
+      iframe[src*="translate.google"],
+      .goog-te-banner-frame,
+      #goog-gt-tt,
+      .goog-te-balloon-frame,
+      .goog-tooltip,
+      .goog-tooltip-skiptranslate,
+      .goog-te-spinner-pos,
+      div[class*="VIpgJd"],
+      span[class*="VIpgJd"],
+      iframe[class*="VIpgJd"],
+      [class*="VIpgJd-ZVi9C"],
+      [class*="VIpgJd-yAWNEb"],
+      #google_translate_element {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        max-width: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+        border: none !important;
+      }
+      .goog-text-highlight {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -18,6 +55,20 @@
     <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement({pageLanguage: 'id', includedLanguages: 'en,id', autoDisplay: false}, 'google_translate_element');
+      }
+
+      // Cleanup injected Google Translate iframes specifically targeting Safari / WebKit quirks
+      if (typeof MutationObserver !== 'undefined') {
+        const gtObserver = new MutationObserver(function() {
+          const frames = document.querySelectorAll('iframe.skiptranslate, iframe[id^=":"]');
+          frames.forEach(function(el) {
+            el.style.setProperty('display', 'none', 'important');
+            el.style.setProperty('visibility', 'hidden', 'important');
+            el.style.setProperty('width', '0px', 'important');
+            el.style.setProperty('height', '0px', 'important');
+          });
+        });
+        gtObserver.observe(document.documentElement, { childList: true, subtree: true });
       }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
