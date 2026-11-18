@@ -55,10 +55,10 @@ function App() {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-bg-primary overflow-hidden transition-opacity duration-500">
+      <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-bg-primary overflow-hidden transition-opacity duration-500 [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
         {/* Animated Background Blobs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 bg-[#c0000c]/15 rounded-full blur-[100px] animate-pulse pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-3/4 w-56 h-56 md:w-72 md:h-72 bg-[#e00010]/10 rounded-full blur-[80px] animate-pulse pointer-events-none" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 bg-[radial-gradient(circle,rgba(192,0,12,0.2)_0%,transparent_70%)] rounded-full animate-pulse pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-3/4 w-56 h-56 md:w-72 md:h-72 bg-[radial-gradient(circle,rgba(224,0,16,0.15)_0%,transparent_70%)] rounded-full animate-pulse pointer-events-none" style={{ animationDelay: '1s' }}></div>
 
         <div className="relative z-10 flex flex-col items-center animate-slide-in">
           {/* Glowing Logo */}

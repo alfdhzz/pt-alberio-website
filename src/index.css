@@ -55,6 +55,15 @@
     color: var(--text-primary);
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Safari iOS hardware acceleration & tile compositor fixes */
+  section, nav {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   ::-webkit-scrollbar {

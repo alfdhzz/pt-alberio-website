@@ -24,10 +24,10 @@ export default function Deliveries() {
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   return (
-    <section id="deliveries" className="py-24 bg-bg-primary relative overflow-hidden">
+    <section id="deliveries" className="py-24 bg-bg-primary relative overflow-hidden [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[#c0000c]/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -right-40 w-96 h-96 rounded-full bg-[radial-gradient(circle,rgba(192,0,12,0.12)_0%,transparent_70%)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

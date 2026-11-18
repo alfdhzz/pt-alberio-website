@@ -68,7 +68,7 @@ export default function About() {
             </div>
 
             {/* BG orb */}
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-[#c0000c]/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div className="absolute -bottom-8 -right-8 w-48 h-48 rounded-full bg-[radial-gradient(circle,rgba(192,0,12,0.18)_0%,transparent_70%)] pointer-events-none"></div>
           </div>
 
           {/* Right - Content */}

@@ -16,12 +16,12 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-bg-primary">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-bg-primary [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
           {/* Left */}
-          <div className={`space-y-8 transition-all duration-1000 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          <div className={`space-y-8 transition-all duration-1000 [transform:translate3d(0,0,0)] ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <div className="inline-flex items-start sm:items-center gap-2 bg-[#c0000c]/10 border border-[#c0000c]/30 rounded-2xl sm:rounded-full px-3 py-2 sm:px-4 sm:py-2">
               <Zap size={14} className="text-[#c0000c] shrink-0 mt-0.5 sm:mt-0" />
               <span className="text-text-primary text-[10px] sm:text-xs font-semibold tracking-widest uppercase leading-snug">
@@ -88,8 +88,8 @@ export default function Hero() {
           {/* Right - Visual */}
           <div className={`relative flex items-center justify-center transition-all duration-1000 delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             {/* Glowing Background Blobs */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 lg:w-96 lg:h-96 bg-[#c0000c]/20 rounded-full blur-[80px] animate-pulse pointer-events-none"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-3/4 w-48 h-48 lg:w-72 lg:h-72 bg-[#e00010]/20 rounded-full blur-[60px] animate-pulse pointer-events-none" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 lg:w-96 lg:h-96 rounded-full bg-[radial-gradient(circle,rgba(192,0,12,0.22)_0%,transparent_70%)] animate-pulse pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-3/4 w-48 h-48 lg:w-72 lg:h-72 rounded-full bg-[radial-gradient(circle,rgba(224,0,16,0.18)_0%,transparent_70%)] animate-pulse pointer-events-none" style={{ animationDelay: '1s' }}></div>
 
             {/* Center logo container */}
             <div className="relative z-10 animate-float">

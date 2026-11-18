@@ -20,10 +20,10 @@ const clients = [
 
 export default function Clients() {
   return (
-    <section className="py-20 bg-bg-secondary relative overflow-hidden border-y border-border-color">
+    <section className="py-20 bg-bg-secondary relative overflow-hidden border-y border-border-color [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
       {/* Decorative Orbs */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-[#c0000c]/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-64 h-64 bg-[#ff4444]/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 rounded-full bg-[radial-gradient(circle,rgba(192,0,12,0.12)_0%,transparent_70%)] pointer-events-none"></div>
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-64 h-64 rounded-full bg-[radial-gradient(circle,rgba(255,68,68,0.12)_0%,transparent_70%)] pointer-events-none"></div>
       
       {/* Fade Gradients at edges for seamless scroll */}
       <div className="absolute inset-y-0 left-0 w-12 sm:w-32 bg-gradient-to-r from-bg-secondary to-transparent z-10 pointer-events-none"></div>
